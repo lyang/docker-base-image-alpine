@@ -1,0 +1,10 @@
+#!/command/with-contenv sh
+# shellcheck shell=sh
+
+UID=${UID:-1000}
+GID=${GID:-1000}
+
+groupmod -o -g "$GID" app
+usermod -o -u "$UID" app
+
+echo "[$(basename $(dirname $0))] USER app $UID:$GID"
